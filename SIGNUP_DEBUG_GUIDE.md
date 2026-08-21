@@ -80,6 +80,38 @@ If error occurs, you'll see:
 
 Update in: `client/src/api/axios.js` baseURL
 
+## Render Deployment
+
+### Web service (server)
+
+- Root directory: `server`
+- Build command: `npm install`
+- Start command: `npm start`
+- Environment variable: `DB_URL=http://127.0.0.1:5000`
+
+The server uses Render's `PORT` automatically. The JSON Server started by `npm start` listens internally on port `5000`; it does not need to be a second public Render service.
+
+### Static site (client)
+
+- Root directory: `client`
+- Build command: `npm run build`
+- Publish directory: `dist`
+- Environment variable: `VITE_API_URL=https://YOUR-SERVER-NAME.onrender.com`
+
+After adding or changing `VITE_API_URL`, trigger a new deploy because Vite embeds it during the build. Do not add `/api` to this variable; the client adds that path itself.
+
+### Remove generated files from Git
+
+`.gitignore` only prevents new untracked files from appearing. If dependencies or build output were already committed, remove them from Git's index once, then commit the removal:
+
+```bash
+git rm -r --cached client/node_modules server/node_modules client/dist server/dist
+git add .gitignore
+git commit -m "Ignore generated dependencies and builds"
+```
+
+If Git reports that a path does not exist, that path was not tracked and can be omitted.
+
 ---
 
 ## Browser DevTools Network Tab Steps

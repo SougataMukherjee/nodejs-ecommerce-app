@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://nodejs-ecommerce-app-1.onrender.com/api",
+  baseURL: `${import.meta.env.VITE_API_URL || "http://localhost:8080"}/api`,
   timeout: 10000,
 });
 
