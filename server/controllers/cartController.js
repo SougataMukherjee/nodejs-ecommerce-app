@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const DB_URL = "http://localhost:5000";
+const DB_URL = require("../config/db");
 
 exports.getCart = async (req, res) => {
   const userId = req.user.id;
