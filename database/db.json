@@ -1,0 +1,14 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "Admin",
+      "email": "admin@test.com",
+      "password": "123456",
+      "role": "admin"
+    }
+  ],
+  "products": [],
+  "cart": [],
+  "orders": []
+}
